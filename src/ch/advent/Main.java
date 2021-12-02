@@ -11,19 +11,45 @@ public class Main {
 
 
     public static void main(String[] args) throws FileNotFoundException {
-        advent1();
+        File file = new File("C:\\Users\\silas\\Downloads\\advent2.txt");
+        Scanner scanner = new Scanner(file);
+
+        List<String> list = new ArrayList<>();
+        while (scanner.hasNext()) {
+            list.add(scanner.next());
+        }
+        advent2(list);
     }
 
-    static void advent1() throws FileNotFoundException {
 
-        File file = new File("C:\\Users\\silas\\Downloads\\advent1.txt");
-        Scanner scanner = new Scanner(file);
-        List<Integer> list = new ArrayList<>();
+    static void advent2(List<String> list) {
+        int forward = 0;
+        int depth = 0;
+        int aim = 0;
+        ListIterator<String> iterator = list.listIterator();
 
-        while (scanner.hasNext()) {
-            list.add(scanner.nextInt());
+        while (iterator.hasNext()){
+            String command = iterator.next();
+
+            if (Objects.equals(command, "forward")){
+                int val = Integer.parseInt(iterator.next());
+                forward += val;
+                depth += aim * val;
+            }
+            if (Objects.equals(command, "up")){
+                aim -= Integer.parseInt(iterator.next());
+            }
+            if (Objects.equals(command, "down")){
+                aim += Integer.parseInt(iterator.next());
+            }
         }
+        int a = forward * depth;
+        System.out.println(a);
 
+    }
+
+    static void advent1() {
+        List<Integer> list = new ArrayList<>();
         ListIterator<Integer> iterator = list.listIterator();
         int value = iterator.next();
         int value2 = iterator.next();
