@@ -1,4 +1,4 @@
-package ch.advent;
+package ch.advent2021;
 
 import java.io.*;
 import java.util.*;
